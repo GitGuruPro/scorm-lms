@@ -1,0 +1,103 @@
+<HTML>
+<head>
+<script type="text/javascript"
+src="https://ajax.googleapis.com/ajax/libs
+/jquery/1.11.2/jquery.min.js"></script>
+<script src="frames/SCORM_API_wrapper.js"></script>
+<script type="text/javascript">
+    var API = {};
+
+    (function ($) {
+        $(document).ready(function () {
+            setupScormApi() 
+            $('#crossdomain').attr('src',  "employee-health-and-wellness-scorm/scormdriver/indexAPI.html")
+        });
+
+        function setupScormApi() {
+            API.LMSInitialize = LMSInitialize;
+            API.LMSGetValue = LMSGetValue;
+            API.LMSSetValue = LMSSetValue;
+            API.LMSCommit = LMSCommit;
+            API.LMSFinish = LMSFinish;
+            API.LMSGetLastError = LMSGetLastError;
+            API.LMSGetDiagnostic = LMSGetDiagnostic;
+            API.LMSGetErrorString = LMSGetErrorString;
+        }
+
+        function LMSInitialize(initializeInput) {
+            displayLog("LMSInitialize: " + initializeInput);
+            return true;
+        }
+
+        function LMSGetValue(varname) {
+            displayLog("LMSGetValue: " + varname);
+            return "";
+        }
+
+        function LMSSetValue(varname, varvalue) {
+            displayLog("LMSSetValue: " + varname + "=" + 
+       varvalue);
+            return "";
+        }
+
+        function LMSCommit(commitInput) {
+            displayLog("LMSCommit: " + commitInput);
+            return true;
+        }
+
+        function LMSFinish(finishInput) {
+            displayLog("LMSFinish: " + finishInput);
+            return true;
+        }
+
+        function LMSGetLastError() {
+            displayLog("LMSGetLastError: ");
+            return 0;
+        }
+
+        function LMSGetDiagnostic(errorCode) {
+            displayLog("LMSGetDiagnostic: " + errorCode);
+            return "";
+        }
+
+        function LMSGetErrorString(errorCode) {
+            displayLog("LMSGetErrorString: " + errorCode);
+            return "";
+        }
+
+        function displayLog(textToDisplay) {
+            var loggerWindow = 
+   document.getElementById("logDisplay");
+            var item = document.createElement("div");
+            item.innerText = textToDisplay;
+            loggerWindow.appendChild(item);
+            var height = $('#logDisplay')[0].scrollHeight;
+            $('#logDisplay').scrollTop(height);
+        }
+    })(jQuery);
+</script>
+
+</head>
+<body style="display: flex; flex-direction: inherit; align-items: 
+center; justify-content: center">
+ 
+
+ <iframe id="samedomain" name="samedomain" src="frames/iframe.html" 
+                style="border: 1px solid 
+blue; flex: 11; align-self: stretch" frameborder="0"></iframe> 
+
+ <iframe id="crossdomain" name="crossdomain" [src]="currentChapter" height="600" 
+                width="825" marginwidth="0" marginheight="0" frameborder="0"></iframe> 
+				
+<div id="logDisplay" style="flex: 1; align-self: stretch; border: 
+1px solid red; padding: 5px;    overflow-y: scroll;
+overflow-x: hidden;">
+</div>
+</body>
+<script type="text/javascript"> 
+  window.onload = function (){ 
+    var crossdomain_iframe = document.getElementById("crossdomain");
+    crossdomain_iframe.src = crossdomain_iframe.src + "?root=" +encodeURI(window.location.href); 
+  }; 
+</script>
+</html>
