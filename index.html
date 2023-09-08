@@ -1,8 +1,6 @@
 <HTML>
 <head>
-<script type="text/javascript"
-src="https://ajax.googleapis.com/ajax/libs
-/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="frames/SCORM_API_wrapper.js"></script>
 <script type="text/javascript">
     var API = {};
@@ -10,7 +8,7 @@ src="https://ajax.googleapis.com/ajax/libs
     (function ($) {
         $(document).ready(function () {
             setupScormApi() 
-            $('#crossdomain').attr('src',  "employee-health-and-wellness-scorm/scormdriver/indexAPI.html")
+            $('#crossdomain').attr('src',  "https://scorm-bot.s3.amazonaws.com/Quiz+Tracking+employee-health-and-wellness-sample-course-scorm12-DCqrPeDr+(1)/scormcontent/index.html")
         });
 
         function setupScormApi() {
@@ -67,7 +65,7 @@ src="https://ajax.googleapis.com/ajax/libs
 
         function displayLog(textToDisplay) {
             var loggerWindow = 
-   document.getElementById("logDisplay");
+            document.getElementById("logDisplay");
             var item = document.createElement("div");
             item.innerText = textToDisplay;
             loggerWindow.appendChild(item);
@@ -83,15 +81,12 @@ center; justify-content: center">
  
 
  <iframe id="samedomain" name="samedomain" src="frames/iframe.html" 
-                style="border: 1px solid 
-blue; flex: 11; align-self: stretch" frameborder="0"></iframe> 
+                style="border: 1px solid blue; flex: 11; align-self: stretch" frameborder="0"></iframe> 
 
  <iframe id="crossdomain" name="crossdomain" [src]="currentChapter" height="600" 
                 width="825" marginwidth="0" marginheight="0" frameborder="0"></iframe> 
 				
-<div id="logDisplay" style="flex: 1; align-self: stretch; border: 
-1px solid red; padding: 5px;    overflow-y: scroll;
-overflow-x: hidden;">
+<div id="logDisplay" style="flex: 1; align-self: stretch; border: 1px solid red; padding: 5px; overflow-y: scroll;overflow-x: hidden;">
 </div>
 </body>
 <script type="text/javascript"> 
